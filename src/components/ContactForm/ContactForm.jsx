@@ -37,7 +37,7 @@ class ContactForm extends Component {
           type="text"
           name="name"
           id="name"
-          pattern="^[a-zA-Zа-яА-Я]+((['-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          pattern="^[\p{L}' ]+$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
           onChange={this.onFormInput}
@@ -47,7 +47,8 @@ class ContactForm extends Component {
           type="tel"
           name="number"
           id="number"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          pattern="^\+380\d{9}$"
+          title="Phone number starts with +380"
           required
           onChange={this.onFormInput}
         />
@@ -58,8 +59,7 @@ class ContactForm extends Component {
 }
 
 ContactForm.propTypes = {
-  onSubmit: PropTypes.func,
-  onFormInput: PropTypes.func,
+  updateContact: PropTypes.func.isRequired,
 };
 
 export default ContactForm;

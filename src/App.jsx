@@ -53,8 +53,9 @@ export default class App extends Component {
 
   deleteContact = e => {
     const id = e.target.id;
-    const newArr = this.state.contacts.filter(cont => cont.id !== id);
-    this.setState({ contacts: newArr });
+    this.setState(prev => ({
+      contacts: prev.contacts.filter(cont => cont.id !== id),
+    }));
   };
 
   updateFilter = filter => {
@@ -77,10 +78,7 @@ export default class App extends Component {
     return (
       <Wrapper>
         <h1>Phonebook</h1>
-        <ContactForm
-          onSubmit={this.onSubmit}
-          updateContact={this.updateContact}
-        />
+        <ContactForm updateContact={this.updateContact} />
 
         <h2>Contacts</h2>
         <Filter updateFilter={this.updateFilter} />
