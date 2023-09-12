@@ -17,7 +17,7 @@ export const Filter = ({ updateFilter }) => {
 };
 
 Filter.propTypes = {
-  onFilterInput: PropTypes.func,
+  updateFilter: PropTypes.func.isRequired,
 };
 
 export default Filter;
